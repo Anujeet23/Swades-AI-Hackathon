@@ -1,5 +1,11 @@
 # Reliable Recording Chunking Pipeline
 
+> 🚀 **Live Demo:** [https://swades-ai-hackathon-web-coral.vercel.app](https://swades-ai-hackathon-web-coral.vercel.app)
+
+A reliable audio recording pipeline built for the browser. It splits recordings into chunks, saves each one locally using OPFS before uploading, and confirms every chunk in a PostgreSQL database. If anything goes wrong mid-session — tab crash, network drop — the system automatically recovers and re-uploads missing chunks on the next visit. Includes a live dashboard showing pipeline health and a transcript generator powered by Deepgram.
+
+# Reliable Recording Chunking Pipeline
+
 An assignment for building a reliable chunking setup that ensures recording data stays accurate in all cases — no data loss, no silent failures.
 
 ## How It Works
