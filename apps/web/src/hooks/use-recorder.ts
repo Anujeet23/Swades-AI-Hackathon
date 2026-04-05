@@ -9,6 +9,8 @@ export interface WavChunk {
   url: string
   duration: number
   timestamp: number
+  uploaded?: boolean
+  uploading?: boolean
 }
 
 export type RecorderStatus = "idle" | "requesting" | "recording" | "paused"
@@ -137,7 +139,7 @@ export function useRecorder(options: UseRecorderOptions = {}) {
         sampleCountRef.current += resampled.length
 
         if (sampleCountRef.current >= chunkThreshold) {
-          // flush synchronously from the collected buffers
+          
           const totalLen = samplesRef.current.reduce((n, b) => n + b.length, 0)
           const merged = new Float32Array(totalLen)
           let off = 0
@@ -222,7 +224,7 @@ export function useRecorder(options: UseRecorderOptions = {}) {
     setChunks([])
   }, [chunks])
 
-  // cleanup on unmount
+  
   useEffect(() => {
     return () => {
       processorRef.current?.disconnect()
